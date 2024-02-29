@@ -694,11 +694,10 @@ main.has-snippet {
 
 .top-site-outer {
   width: 120px;
-  padding: 20px 16px 4px;
+  /*! padding: 20px 16px 4px; */
   border-radius: 8px;
   display: inline-block;
   background-color: color-mix(in srgb, var(--newtab-background-color) 50%, transparent);
-  border: 1px solid rgba(170, 170, 170, 0.6);
   z-index: 1;
 }
 .top-site-outer .top-site-inner {
@@ -1255,7 +1254,7 @@ main.has-snippet {
 }
 
 .search-wrapper {
-  padding: 34px 0 38px;
+  padding: 34px 0 16px;
 }
 .only-search .search-wrapper {
   padding: 0 0 38px;
@@ -1264,14 +1263,14 @@ main.has-snippet {
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-bottom: 48px;
+  margin-bottom: 16px;
 }
 .search-wrapper .logo-and-wordmark .logo {
   display: inline-block;
-  height: 82px;
-  width: 82px;
+  height: 100px;
+  width: 100px;
   background: url("chrome://branding/content/about-logo.png") no-repeat center;
-  background-size: 82px;
+  background-size: 100px;
 }
 @media (min-resolution: 2x) {
   .search-wrapper .logo-and-wordmark .logo {
@@ -1285,7 +1284,7 @@ main.has-snippet {
   display: inline-block;
   fill: var(--newtab-wordmark-color);
   height: 100px;
-  margin-inline-start: 25px;
+  /*! margin-inline-start: 25px; */
   width: 300px;
 }
 @media (max-width: 609px) {

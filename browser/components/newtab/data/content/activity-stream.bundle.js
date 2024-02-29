@@ -14357,6 +14357,14 @@ class ContentSection extends (external_React_default()).PureComponent {
       value: "4",
       "data-l10n-id": "newtab-custom-row-selector",
       "data-l10n-args": "{\"num\": 4}"
+    }), /*#__PURE__*/external_React_default().createElement("option", {
+      value: "5",
+      "data-l10n-id": "newtab-custom-row-selector",
+      "data-l10n-args": "{\"num\": 5}"
+    }), /*#__PURE__*/external_React_default().createElement("option", {
+      value: "6",
+      "data-l10n-id": "newtab-custom-row-selector",
+      "data-l10n-args": "{\"num\": 6}"
     })), mayHaveSponsoredTopSites && /*#__PURE__*/external_React_default().createElement("div", {
       className: "check-wrapper",
       role: "presentation"
@@ -15162,7 +15170,7 @@ class BaseContent extends (external_React_default()).PureComponent {
     }, /*#__PURE__*/external_React_default().createElement("a", {
       className: prefs["floorp.newtab.releasenote.hide"] ? "floorp-releasenote-hidden" : "releasenote",
       href: "https://support.ablaze.one"
-    }, "Support"), /*#__PURE__*/external_React_default().createElement("br", null), /*#__PURE__*/external_React_default().createElement("br", null), /*#__PURE__*/external_React_default().createElement("a", {
+    }, ""), /*#__PURE__*/external_React_default().createElement("br", null), /*#__PURE__*/external_React_default().createElement("br", null), /*#__PURE__*/external_React_default().createElement("a", {
       className: prefs["floorp.newtab.releasenote.hide"] ? "floorp-releasenote-hidden" : "releasenote",
       href: "https://blog.ablaze.one/category/ablaze/ablaze-project/floorp"
     }, "Release Note")), /*#__PURE__*/external_React_default().createElement("a", {
