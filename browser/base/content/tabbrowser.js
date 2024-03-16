@@ -3158,13 +3158,23 @@
         let tab;
         let tabWasReused = false;
 
-        let { WorkspacesService } = ChromeUtils.importESModule(
-          "resource:///modules/WorkspacesService.sys.mjs"
+        if (tabData.floorpDisableHistory) {
+          continue;
+        }
+
+        
+        let floorpWorkspaceId, floorpLastShowWorkspaceId, floorpWorkspace, floorpSSB;
+
+        var { FloorpAppConstants } = ChromeUtils.importESModule(
+          "resource:///modules/FloorpAppConstants.sys.mjs"
         );
-        let floorpWorkspaceId = tabData.floorpWorkspaceId;
-        let floorpLastShowWorkspaceId = tabData.floorpLastShowWorkspaceId;
-        let floorpWorkspace = tabData.floorpWorkspace ? tabData.floorpWorkspace : Services.prefs.getStringPref("floorp.browser.workspace.all").split(",")[0];
-        let floorpSSB = tabData.floorpSSB;
+ 
+        if (FloorpAppConstants.FLOORP_OFFICIAL_COMPONENTS_ENABLED) {
+          floorpWorkspaceId = tabData.floorpWorkspaceId;
+          floorpLastShowWorkspaceId = tabData.floorpLastShowWorkspaceId;
+          floorpWorkspace = tabData.floorpWorkspace ? tabData.floorpWorkspace : Services.prefs.getStringPref("floorp.browser.workspace.all").split(",")[0];
+          floorpSSB = tabData.floorpSSB;
+        }
 
         if (floorpSSB) {
           window.close();
@@ -3181,12 +3191,18 @@
           tab = this.selectedTab;
           tab.setAttribute("floorpWorkspace", floorpWorkspace);
 
-          if (floorpWorkspaceId) {
-            tab.setAttribute(WorkspacesService.workspacesTabAttributionId, floorpWorkspaceId);
-          }
+          if (FloorpAppConstants.FLOORP_OFFICIAL_COMPONENTS_ENABLED) {
+            let { WorkspacesService } = ChromeUtils.importESModule(
+              "resource:///modules/WorkspacesService.sys.mjs"
+            );      
 
-          if (floorpLastShowWorkspaceId) {
-            tab.setAttribute(WorkspacesService.workspaceLastShowId, floorpLastShowWorkspaceId);
+            if (floorpWorkspaceId) {
+              tab.setAttribute(WorkspacesService.workspacesTabAttributionId, floorpWorkspaceId);
+            }
+  
+            if (floorpLastShowWorkspaceId) {
+              tab.setAttribute(WorkspacesService.workspaceLastShowId, floorpLastShowWorkspaceId);
+            }
           }
 
           if (floorpSSB) {
@@ -3244,12 +3260,18 @@
 
           tab.setAttribute("floorpWorkspace", floorpWorkspace);
 
-          if (floorpWorkspaceId) {
-            tab.setAttribute(WorkspacesService.workspacesTabAttributionId, floorpWorkspaceId);
-          }
+          if (FloorpAppConstants.FLOORP_OFFICIAL_COMPONENTS_ENABLED) {
+            let { WorkspacesService } = ChromeUtils.importESModule(
+              "resource:///modules/WorkspacesService.sys.mjs"
+            );      
 
-          if (floorpLastShowWorkspaceId) {
-            tab.setAttribute(WorkspacesService.workspaceLastShowId, floorpLastShowWorkspaceId);
+            if (floorpWorkspaceId) {
+              tab.setAttribute(WorkspacesService.workspacesTabAttributionId, floorpWorkspaceId);
+            }
+  
+            if (floorpLastShowWorkspaceId) {
+              tab.setAttribute(WorkspacesService.workspaceLastShowId, floorpLastShowWorkspaceId);
+            }
           }
 
           if (select) {

@@ -925,8 +925,8 @@ var SessionStoreInternal = {
             for (let i = 0; i < lastSessionWindows.length; i++) {
               let closedWindow = state._closedWindows[i];
               let closedWindowTime = closedWindow.closedAt;
-              // If the last closed window is closed in +-100, we will restore it
-              if (closedWindowTime > closedTime - 100 && closedWindowTime < closedTime + 100) {
+              // If the last closed window is closed in +-1000, we will restore it
+              if (closedWindowTime > closedTime - 2000 && closedWindowTime < closedTime + 2000) {
                 state.windows.push(closedWindow);
                 // Remove the closed window from the closed windows
                 state._closedWindows.splice(i, 1);
@@ -4080,12 +4080,18 @@ var SessionStoreInternal = {
     }
 
     // Floorp Injections
-    let windowUuid = aWindow.gWorkspaces._windowId;
-    if (windowUuid) {
-      winData.windowUuid = windowUuid;
-    } else {
-      delete winData.windowUuid;
+    var { FloorpAppConstants } = ChromeUtils.importESModule(
+      "resource:///modules/FloorpAppConstants.sys.mjs"
+    );
+    if (FloorpAppConstants.FLOORP_OFFICIAL_COMPONENTS_ENABLED) {
+      let windowUuid = aWindow.gWorkspaces._windowId;
+      if (windowUuid) {
+        winData.windowUuid = windowUuid;
+      } else {
+        delete winData.windowUuid;
+      }
     }
+
 
     let floorpWebPanelWindow = aWindow.floorpWebPanelWindow;
     winData.floorpWebPanelWindow = !!floorpWebPanelWindow;
@@ -4790,10 +4796,6 @@ var SessionStoreInternal = {
       return;
     }
 
-    if (tabData.floorpDisableHistory) {
-      return;
-    }
-
     let loadArguments = options.loadArguments;
     let window = tab.ownerGlobal;
     let tabbrowser = window.gBrowser;
@@ -5324,15 +5326,21 @@ var SessionStoreInternal = {
         aWindow.SidebarUI.showInitially(aSidebar);
       }
 
-      let { WorkspacesWindowUuidService } = ChromeUtils.importESModule(
-        "resource:///modules/WorkspacesService.sys.mjs"
+      var { FloorpAppConstants } = ChromeUtils.importESModule(
+        "resource:///modules/FloorpAppConstants.sys.mjs"
       );
-
-      // workspaces Window Id
-      if (aWindowId) {
-        aWindow.gWorkspaces._windowId = aWindowId;
-      } else {
-        aWindow.gWorkspaces._windowId = WorkspacesWindowUuidService.getGeneratedUuid();
+  
+      if (FloorpAppConstants.FLOORP_OFFICIAL_COMPONENTS_ENABLED) {
+        let { WorkspacesWindowUuidService } = ChromeUtils.importESModule(
+          "resource:///modules/WorkspacesService.sys.mjs"
+        );
+        
+        // workspaces Window Id
+        if (aWindowId) {
+          aWindow.gWorkspaces._windowId = aWindowId;
+        } else {
+          aWindow.gWorkspaces._windowId = WorkspacesWindowUuidService.getGeneratedUuid();
+        }  
       }
 
       // since resizing/moving a window brings it to the foreground,

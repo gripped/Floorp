@@ -138,7 +138,7 @@ For more detailed information and guidance, check out our [Floorp Documentation 
 
 - [Official Floorp Twitter](https://twitter.com/Floorp_Browser) or [Official Ablaze Twitter](https://twitter.com/Ablaze_MIRAI)
 
-- [Official Ablaze Community Discord Server](https://discord.com/invite/NCYYwx2Enn)
+- [Official Ablaze Community Discord Server](https://discord.com/invite/f8NFWjx6Rt)
 
 ### 📜 Privacy Policy
 
@@ -212,7 +212,7 @@ Notice: Floorp is not based on Waterfox. The structure is a reference and has no
 
 ### 🎨 firefox-gnome-theme
 
-- [Firefox-Gnome-Theme](https://github.com/rafaelmardojai/firefox-gnome-theme/blob/master/LICENSE)
+- [Firefox-Gnome-Theme](https://github.com/rafaelmardojai/firefox-gnome-theme/)
 - [The Unlicense](https://github.com/rafaelmardojai/firefox-gnome-theme/blob/master/LICENSE)
 - Author: [rafaelmardojai](https://github.com/rafaelmardojai)
 
